@@ -59,9 +59,13 @@ def dict_to_table(data_dict, columns):
                 max_w = len(val_str)
         widths.append(max_w)
 
-    header_cells = [" " + headers[i].ljust(widths[i]) + " " for i in range(len(columns))]
+    header_cells = [
+        " " + headers[i].ljust(widths[i]) + " " for i in range(len(columns))
+    ]
     header_row = "|" + "|".join(header_cells) + "|"
-    sep_row = "|" + "|".join("-" * (widths[i] + 2) for i in range(len(columns))) + "|"
+    sep_row = "|" + "|".join(
+        "-" * (widths[i] + 2) for i in range(len(columns))
+    ) + "|"
 
     data_rows = []
     for entry in data_dict.values():

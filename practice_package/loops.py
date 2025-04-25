@@ -30,7 +30,8 @@ def count_vowel_triplets(text: str) -> int:
 
 def find_fibonacci_index(number):
     a, b, index = 1, 1, 2
-    if number == 1: return 1
+    if number == 1:
+        return 1
     while b < number:
         a, b = b, a + b
         index += 1
@@ -38,8 +39,10 @@ def find_fibonacci_index(number):
 
 
 def remove_duplicates(string):
-    if not string: return ""
+    if not string:
+        return ""
     result = [string[0]]
     for c in string[1:]:
-        if c != result[-1]: result.append(c)
+        if c != result[-1]:
+            result.append(c)
     return ''.join(result)

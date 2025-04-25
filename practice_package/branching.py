@@ -1,19 +1,31 @@
-def is_weekend(day): return day in {6, 7}
+def is_weekend(day):
+    return day in {6, 7}
 
 
 def get_discount(amount):
-    return round(amount * 0.1, 2) if amount >= 5000 else round(amount * 0.05, 2) if amount >= 1000 else 0
+    if amount >= 5000:
+        return round(amount * 0.1, 2)
+    elif amount >= 1000:
+        return round(amount * 0.05, 2)
+    else:
+        return 0
 
 
 def describe_number(n):
-    length = "однозначное" if n < 10 else "двузначное" if n < 100 else "трехзначное"
+    if n < 10:
+        length = "однозначное"
+    elif n < 100:
+        length = "двузначное"
+    else:
+        length = "трехзначное"
+
     parity = "четное" if n % 2 == 0 else "нечетное"
     return f"{parity} {length} число"
 
 
 def convert_to_meters(unitNumber, lengthInUnits):
     factors = {1: 0.1, 2: 1000, 3: 1, 4: 0.001, 5: 0.01}
-    return lengthInUnits * factors[unitNumber]
+    return lengthInUnits * factors.get(unitNumber, 0)
 
 
 def describe_age(age):
@@ -30,7 +42,9 @@ def describe_age(age):
     if age % 100 in (11, 12, 13, 14):
         suffix = "лет"
     else:
-        suffix = {1: "год", 2: "года", 3: "года", 4: "года"}.get(age % 10, "лет")
+        suffix = {
+            1: "год", 2: "года", 3: "года", 4: "года"
+        }.get(age % 10, "лет")
 
     if age <= 20 or age == 100:
         word = tens.get(age, "")
@@ -42,4 +56,3 @@ def describe_age(age):
             word += " " + ones[one]
 
     return f"{word} {suffix}"
-
